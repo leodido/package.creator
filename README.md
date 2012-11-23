@@ -6,7 +6,7 @@ It creates a new R package following [devtools](https://github.com/hadley/devtoo
 
 1. Download the script (or clone the repository)
 3. Type `path/to/package.creator -d path/to/world/domination -n awesomepack`
-4. Wait that your computer bootstraps your R package structure in `path/to/worl/domination/awesomepack`
+4. Wait that your computer bootstraps your R package structure in `path/to/world/domination/awesomepack`
 5. Do an R awesome package now, you have no more excuses!
 
 ##### FYI
