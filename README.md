@@ -18,7 +18,7 @@ You can omit the specification of the installation directory, the default is `$H
 
 To work it requires:
 * R installed, clearly
-* Rscript
+* Rscript installed
 * [devtools](https://github.com/hadley/devtools) R package installed
 
 ##### FYI
