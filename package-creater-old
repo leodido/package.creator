@@ -1,0 +1,38 @@
+#!/usr/bin/Rscript --vanilla --default-packages=methods,utils,optparse,devtools
+#
+# Script to boostrap R package development through R devtools package.
+# @author: leodido <leodidonato@gmail.com>
+
+library(optparse)
+opt_ls <- list(
+  make_option(c("-d", "--directory"), help = "Directory where the package will be created."),
+  make_option(c("-n", "--name"), help = "The name of the package (and of the directory that will be created).")
+)
+parser <- OptionParser(usage = "Rscript %prog [options]", option_list = opt_ls)
+arg <- parse_args(
+  parser,
+  args = commandArgs(trailingOnly = TRUE)
+)
+dir <- arg$directory
+pname <- arg$name
+if (!is.null(dir)) {
+  dir <- gsub("/$", "", dir)
+  dir.create(file.path(dir), showWarnings = FALSE)
+} else {
+  stop("\n\tSpecify a directory, it is mandatory.")
+}
+if (!is.null(pname)) {
+  pname <- gsub("\\s", "", pname)
+} else {
+  stop("\n\tSpecify a package name, it is mandatory.")
+}
+
+pckg <- file.path(dir, pname)
+if (!file.exists(pckg)) {
+  library(methods)
+  library(devtools)
+  create(pckg)
+  cat("\nPackage path: ", pckg, "\n")
+} else {
+  stop("Directory already exists.")
+}

@@ -1,0 +1,76 @@
+#!/bin/bash
+#
+# @author leodido <leodidonato@gmail.com>
+
+usage() {
+    echo -e "
+\E[31mUsage\E[37m: $0 [options]
+This script creates the boilerplate of a new R package with the conventions defined by the devtools package.
+
+REQUIREMENTS:
+    R, Rscript (littler) and devtools package already installed.
+OPTIONS:
+    \E[31m-d\E[37m    The directory where the package will be stored. \E[31mMandatory argument\E[37m.
+    \E[31m-n\E[37m    The name of the package (and of the directory that will be created). \E[31mMandatory argument\E[37m.
+    \E[31m-h\E[37m    Shows the help.
+ARGUMENTS:
+    Both directory and package name argument are mandatory.
+EXAMPLES:
+    $0 -d ~/Workspace/R/Packages ciao
+"
+}
+
+DEFAULTDIR=$HOME"/Workspace/R/Packages/"
+DIRNAME=
+PCKGNAME=
+while getopts ":d::n:h" OPTION; do
+    case $OPTION in
+        d)
+            DIRNAME=$OPTARG
+            ;;
+        n)
+            PCKGNAME=$OPTARG
+            ;;
+        h)
+            usage
+            exit 1
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            exit 1
+            ;;
+    esac
+done
+
+if [ -z $DIRNAME ];then
+  DIRNAME=$DEFAULTDIR
+fi
+
+if [ -z $PCKGNAME ]; then
+  usage
+  exit 1
+fi
+
+TMP=`tempfile`
+
+cat <<EOF >> $TMP
+dir <- gsub("/$", "", "$DIRNAME")
+pname <- "$PCKGNAME"
+pckg <- file.path(dir, pname)
+if (!file.exists(pckg)) {
+  library(methods)
+  library(devtools)
+  create(pckg)
+  cat("\nPackage path: ", pckg, "\n")
+} else {
+  stop("Directory already exists.")
+}
+EOF
+
+/usr/bin/Rscript --vanilla $TMP -d $DIRNAME -n $PCKGNAME
+
+trap "rm -f $TMP" EXIT
