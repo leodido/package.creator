@@ -1,4 +1,4 @@
-`package.creator` is **a simple shell script that automatically creates the boilerplate for the development of a new R package.**
+**A simple shell script that automatically creates the boilerplate for the development of a new R package.**
 
 It creates a new R package following [devtools](https://github.com/hadley/devtools) conventions.
 
