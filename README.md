@@ -1,13 +1,13 @@
-**Simple shell script that automatically creates the boilerplate for the development of a new R package.**
+`package.creator` is **a simple shell script that automatically creates the boilerplate for the development of a new R package.**
 
 It creates a new R package following [devtools](https://github.com/hadley/devtools) conventions.
 
 ### Usage
 
-1 Download the script (or clone the repository)
-2 Create a symbolic link to it (if you want)
-3 Type `package-creator -d path/to/world/domination -n awesomepack`
-4 Do an R awesome package now, you have no more excuses!
+1. Download the script (or clone the repository)
+2. Create a symbolic link to it (if you want)
+3. Type `package-creator -d path/to/world/domination -n awesomepack`
+4. Do an R awesome package now, you have no more excuses!
 
 ##### FYI
 
