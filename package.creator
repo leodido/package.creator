@@ -1,17 +1,18 @@
 #!/bin/bash
+# package.creator
 #
 # @author leodido <leodidonato@gmail.com>
 
 usage() {
-    echo -e "
-\033[1mUsage: package-creato\E[31mr\E[37m [options]\033[0m
-\E[37mThis script creates the boilerplate of a new R package with the conventions defined by the devtools package.
+    printf "
+\033[1mUsage: package.creato$(tput setaf 1)r$(tput sgr0) [options]\033[0m
+This script creates the boilerplate of a new R package with the conventions defined by the devtools package.
 
 REQUIREMENTS:
     R, Rscript (littler) and devtools package already installed.
 OPTIONS:
     -d    The directory where the package will be stored.
-    \E[31m-n\E[37m    The name of the package (and of the directory that will be created). \E[31mMandatory argument\E[37m.
+    $(tput setaf 1)-n$(tput sgr0)    The name of the package (and of the directory that will be created). $(tput setaf 1)Mandatory argument$(tput sgr0).
     -h    Shows the help.
 ARGUMENTS:
     The directory argument can be omitted, default is $HOME/Workspace/R/Packages.

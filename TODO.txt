@@ -1,1 +1,2 @@
 * TODO: check if the script requirements are met.
+* TODO: regexp to sanitize malformed package names.
