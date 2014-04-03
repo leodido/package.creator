@@ -1,3 +1,6 @@
+package.creator [![Analytics](https://ga-beacon.appspot.com/UA-49657176-1/package.creator)](https://github.com/igrigorik/ga-beacon)
+===================
+
 **A simple shell script that automatically creates the boilerplate for the development of a new R package.**
 
 It creates a new R package following [devtools](https://github.com/hadley/devtools) conventions.
